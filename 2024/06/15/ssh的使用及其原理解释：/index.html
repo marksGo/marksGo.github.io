@@ -6,13 +6,21 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+  <meta name="description" content="ssh的使用及其原理解释：首先我们来演示一下如何使用 ssh 来在主机上无密码远程登陆GitHub  在命令行终端输入如下命令：  1yangwuguab@yangwuguab-virtual-machine:~&#x2F;Desktop$ ~&#x2F;.ssh  如果提示： 1bash: cd: &#x2F;home&#x2F;yangwuguab&#x2F;.ssh: No such file or directory  没有提示，直接去第">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2024/06/15/ssh%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86%E8%A7%A3%E9%87%8A%EF%BC%9A/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ssh的使用及其原理解释：首先我们来演示一下如何使用 ssh 来在主机上无密码远程登陆GitHub  在命令行终端输入如下命令：  1yangwuguab@yangwuguab-virtual-machine:~&#x2F;Desktop$ ~&#x2F;.ssh  如果提示： 1bash: cd: &#x2F;home&#x2F;yangwuguab&#x2F;.ssh: No such file or directory  没有提示，直接去第">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/34042/Pictures/Screenshots/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-06-15%20202019.png">
+<meta property="og:image" content="c:/Users/34042/Pictures/Screenshots/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-06-15%20202546.png">
+<meta property="og:image" content="c:/Users/34042/Pictures/Screenshots/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-06-15%20203107.png">
+<meta property="article:published_time" content="2024-06-15T12:38:11.636Z">
+<meta property="article:modified_time" content="2024-06-15T12:38:11.849Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/34042/Pictures/Screenshots/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-06-15%20202019.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -67,9 +75,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-ssh的使用及其原理解释：" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-ssh的使用及其原理解释：" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/06/15/ssh%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86%E8%A7%A3%E9%87%8A%EF%BC%9A/" class="article-date">
   <time class="dt-published" datetime="2024-06-15T12:38:11.636Z" itemprop="datePublished">2024-06-15</time>
@@ -137,101 +143,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/06/14/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2024-06-14T14:12:34.385Z" itemprop="datePublished">2024-06-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/06/14/hello-world/">Hello World</a>
-    </h1>
+    <a href="/2024/06/14/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/14/hello-world/" data-id="clxeryhfr0000pwvh86oj4dk7" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-学习政治经济学概论徐禾版" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/06/14/%E5%AD%A6%E4%B9%A0%E6%94%BF%E6%B2%BB%E7%BB%8F%E6%B5%8E%E5%AD%A6%E6%A6%82%E8%AE%BA%E5%BE%90%E7%A6%BE%E7%89%88/" class="article-date">
-  <time class="dt-published" datetime="2024-06-14T13:32:57.000Z" itemprop="datePublished">2024-06-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/06/14/%E5%AD%A6%E4%B9%A0%E6%94%BF%E6%B2%BB%E7%BB%8F%E6%B5%8E%E5%AD%A6%E6%A6%82%E8%AE%BA%E5%BE%90%E7%A6%BE%E7%89%88/">学习政治经济学概论徐禾版</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="学习-政治经济学概论徐禾版"><a href="#学习-政治经济学概论徐禾版" class="headerlink" title="学习 政治经济学概论徐禾版"></a>学习 政治经济学概论徐禾版</h1><p>[TOC]</p>
-<h2 id="第一章：商品和货币"><a href="#第一章：商品和货币" class="headerlink" title="第一章：商品和货币"></a>第一章：商品和货币</h2><h2 id="第二章：资本和剩余价值"><a href="#第二章：资本和剩余价值" class="headerlink" title="第二章：资本和剩余价值"></a>第二章：资本和剩余价值</h2><h2 id="第三章：工资"><a href="#第三章：工资" class="headerlink" title="第三章：工资"></a>第三章：工资</h2><h2 id="第四章：资本积累及其历史趋势"><a href="#第四章：资本积累及其历史趋势" class="headerlink" title="第四章：资本积累及其历史趋势"></a>第四章：资本积累及其历史趋势</h2><h2 id="第五章：资本的循环和周转"><a href="#第五章：资本的循环和周转" class="headerlink" title="第五章：资本的循环和周转"></a>第五章：资本的循环和周转</h2><h2 id="第六章：社会资本的再生产和流通"><a href="#第六章：社会资本的再生产和流通" class="headerlink" title="第六章：社会资本的再生产和流通"></a>第六章：社会资本的再生产和流通</h2><h2 id="第七章：平均利润和生产价格"><a href="#第七章：平均利润和生产价格" class="headerlink" title="第七章：平均利润和生产价格"></a>第七章：平均利润和生产价格</h2><h2 id="第八章：商业资本和商业利润"><a href="#第八章：商业资本和商业利润" class="headerlink" title="第八章：商业资本和商业利润"></a>第八章：商业资本和商业利润</h2><h2 id="第九章：借贷资本和信用"><a href="#第九章：借贷资本和信用" class="headerlink" title="第九章：借贷资本和信用"></a>第九章：借贷资本和信用</h2><h2 id="第十章：地租"><a href="#第十章：地租" class="headerlink" title="第十章：地租"></a>第十章：地租</h2><h2 id="第十一章：资本主义的经济危机"><a href="#第十一章：资本主义的经济危机" class="headerlink" title="第十一章：资本主义的经济危机"></a>第十一章：资本主义的经济危机</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/06/14/%E5%AD%A6%E4%B9%A0%E6%94%BF%E6%B2%BB%E7%BB%8F%E6%B5%8E%E5%AD%A6%E6%A6%82%E8%AE%BA%E5%BE%90%E7%A6%BE%E7%89%88/" data-id="clxeryhg00001pwvhh9k02cbg" data-title="学习政治经济学概论徐禾版" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
