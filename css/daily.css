@@ -642,7 +642,7 @@
 }
 
 /* 小月历格子 */
-.cal-mini-grid {
+#aside-content .cal-mini-grid {
   display: grid !important;
   grid-template-columns: repeat(7, 1fr) !important;
   gap: 2px;
@@ -657,7 +657,7 @@
   padding-bottom: 3px;
 }
 
-.cal-day {
+#aside-content .cal-day {
   text-align: center;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
@@ -669,7 +669,7 @@
   border-radius: 4px;
 }
 
-.cal-day.today {
+#aside-content .cal-day.today {
   background: var(--daily-accent) !important;
   color: #fff !important;
   border-radius: 50% !important;
@@ -679,7 +679,7 @@
   font-weight: 600;
 }
 
-.cal-day.other {
+#aside-content .cal-day.other {
   color: var(--daily-border2) !important;
 }
 
@@ -729,7 +729,7 @@
   margin-bottom: 12px;
 }
 
-.cal-prog-row {
+#aside-content .cal-prog-row {
   display: grid !important;
   grid-template-columns: 28px 1fr 56px !important;
   align-items: center;
@@ -751,7 +751,7 @@
   border: 1px solid var(--daily-border);
 }
 
-.cal-prog-bar-fill {
+#aside-content .cal-prog-bar-fill {
   height: 100%;
   background: var(--daily-accent);
   border-radius: 3px;
