@@ -1,0 +1,784 @@
+/* ============================================
+   daily.css — 每日一问页面样式
+   所有规则加 #page 前缀，覆盖 Solitude 全局样式
+   ============================================ */
+
+/* ── CSS 变量（挂在 :root，不需要 #page 前缀） ── */
+:root,
+[data-theme="light"] {
+  --daily-bg:        #f7f5f0;
+  --daily-bg2:       #ffffff;
+  --daily-bg3:       #f0ede6;
+  --daily-border:    #e0dbd0;
+  --daily-border2:   #ccc7bb;
+  --daily-text:      #1a1714;
+  --daily-text2:     #4a4540;
+  --daily-text3:     #8a8278;
+  --daily-accent:    #2563eb;
+  --daily-accent-bg: #eff6ff;
+  --daily-green:     #16a34a;
+  --daily-green2:    #bbf7d0;
+  --daily-green3:    #dcfce7;
+  --daily-orange:    #d97706;
+  --daily-shadow:    0 1px 4px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+  --daily-h-none:     #ede9e0;
+  --daily-h-absent:   #e2ddd4;
+  --daily-h-absent-m: #ccc7bb;
+  --daily-h-propose:  #bbf7d0;
+  --daily-h-think:    #4ade80;
+  --daily-h-resolved: #16a34a;
+}
+
+[data-theme="dark"] {
+  --daily-bg:        #0d0f14;
+  --daily-bg2:       #13161d;
+  --daily-bg3:       #1a1e28;
+  --daily-border:    #2a3040;
+  --daily-border2:   #333d52;
+  --daily-text:      #c8d4e8;
+  --daily-text2:     #8a97b0;
+  --daily-text3:     #566070;
+  --daily-accent:    #4d9ef5;
+  --daily-accent-bg: #0f1e35;
+  --daily-green:     #3ecf8e;
+  --daily-green2:    #1d7a52;
+  --daily-green3:    #0e3d28;
+  --daily-orange:    #f5a623;
+  --daily-shadow:    0 1px 4px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.25);
+  --daily-h-none:     #1a1e28;
+  --daily-h-absent:   #1e2430;
+  --daily-h-absent-m: #2d3545;
+  --daily-h-propose:  #1a3a28;
+  --daily-h-think:    #1e5c3a;
+  --daily-h-resolved: #3ecf8e;
+}
+
+/* ── 页头 ─────────────────────────────────── */
+#page .daily-header {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--daily-border);
+}
+
+#page .daily-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 34px !important;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 !important;
+  color: var(--daily-text) !important;
+}
+
+#page .daily-title-en {
+  display: block !important;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px !important;
+  color: var(--daily-text3) !important;
+  margin-top: 7px;
+}
+
+#page .daily-header-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--daily-text3);
+  text-align: right;
+  line-height: 1.9;
+}
+
+#page .daily-header-meta b {
+  color: var(--daily-text2);
+  font-weight: 500;
+}
+
+/* ── 统计卡片 ─────────────────────────────── */
+#page .daily-stat-cards {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  border: 1px solid var(--daily-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 40px;
+  box-shadow: var(--daily-shadow);
+}
+
+#page .daily-stat-card {
+  display: block !important;
+  padding: 18px 16px !important;
+  border-right: 1px solid var(--daily-border);
+  background: var(--daily-bg2) !important;
+  transition: background 0.2s;
+}
+
+#page .daily-stat-card:last-child { border-right: none; }
+#page .daily-stat-card:hover { background: var(--daily-accent-bg) !important; }
+
+#page .daily-stat-num {
+  font-family: 'Georgia', serif;
+  font-size: 36px !important;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--daily-text) !important;
+  display: block !important;
+}
+
+#page .daily-stat-num small {
+  font-size: 15px !important;
+  color: var(--daily-text3) !important;
+  margin-left: 3px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+#page .daily-stat-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px !important;
+  color: var(--daily-text3) !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 10px;
+  display: block !important;
+}
+
+#page .daily-stat-zh {
+  font-size: 12px !important;
+  color: var(--daily-text2) !important;
+  margin-top: 3px;
+  display: block !important;
+}
+
+/* ── Section 标题 ─────────────────────────── */
+#page .daily-section-head {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+  gap: 14px;
+}
+
+#page .daily-section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px !important;
+  font-weight: 600;
+  margin: 0 !important;
+  color: var(--daily-text) !important;
+}
+
+#page .daily-section-title em {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px !important;
+  color: var(--daily-text3) !important;
+  margin-left: 8px;
+}
+
+/* ── 年份切换 ─────────────────────────────── */
+#page .daily-year-tabs {
+  display: flex !important;
+  gap: 4px;
+}
+
+#page .daily-year-tab {
+  display: inline-block !important;
+  background: transparent !important;
+  border: 1px solid var(--daily-border) !important;
+  color: var(--daily-text2) !important;
+  padding: 4px 12px !important;
+  border-radius: 8px !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px !important;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#page .daily-year-tab:hover {
+  border-color: var(--daily-accent) !important;
+  color: var(--daily-accent) !important;
+}
+
+#page .daily-year-tab.active {
+  background: var(--daily-accent) !important;
+  color: #fff !important;
+  border-color: var(--daily-accent) !important;
+}
+
+/* ── 热力图 ───────────────────────────────── */
+#page .daily-heatmap-wrap {
+  background: var(--daily-bg2) !important;
+  border: 1px solid var(--daily-border);
+  border-radius: 12px;
+  padding: 20px 20px 16px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  box-shadow: var(--daily-shadow);
+}
+
+#page .daily-heatmap {
+  display: inline-grid !important;
+  grid-template-rows: 16px repeat(7, 12px) !important;
+  grid-auto-columns: 12px !important;
+  grid-auto-flow: column !important;
+  gap: 3px;
+}
+
+#page .daily-heatmap__month {
+  grid-row: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px !important;
+  color: var(--daily-text3) !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  align-self: end;
+  padding-bottom: 2px;
+}
+
+#page .daily-cell {
+  display: block !important;
+  width: 12px !important;
+  height: 12px !important;
+  background: var(--daily-h-none) !important;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+
+#page .daily-cell:hover { transform: scale(1.5) !important; z-index: 2; }
+#page .daily-cell.selected { outline: 2px solid var(--daily-accent); outline-offset: 1px; z-index: 3; }
+#page .daily-cell[data-state="future"]        { background: transparent !important; border: 1px dashed var(--daily-border) !important; }
+#page .daily-cell[data-state="absent-auto"]   { background: var(--daily-h-absent) !important; }
+#page .daily-cell[data-state="absent-manual"] { background: var(--daily-h-absent-m) !important; }
+#page .daily-cell[data-state="propose"]       { background: var(--daily-h-propose) !important; }
+#page .daily-cell[data-state="think"]         { background: var(--daily-h-think) !important; }
+#page .daily-cell[data-state="resolved"]      { background: var(--daily-h-resolved) !important; }
+
+/* ── 图例 ─────────────────────────────────── */
+#page .daily-legend {
+  display: flex !important;
+  gap: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px !important;
+  color: var(--daily-text3) !important;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+#page .daily-legend-item {
+  display: flex !important;
+  align-items: center;
+  gap: 5px;
+}
+
+#page .daily-legend-sw {
+  display: inline-block !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 2px;
+  background: var(--daily-h-none);
+  flex-shrink: 0;
+}
+
+#page .daily-legend-sw.absent-auto   { background: var(--daily-h-absent) !important; border: 1px solid var(--daily-border2); }
+#page .daily-legend-sw.absent-manual { background: var(--daily-h-absent-m) !important; }
+#page .daily-legend-sw.propose { background: var(--daily-h-propose) !important; }
+#page .daily-legend-sw.think   { background: var(--daily-h-think) !important; }
+#page .daily-legend-sw.resolved{ background: var(--daily-h-resolved) !important; }
+
+/* ── 筛选器 ───────────────────────────────── */
+#page .daily-filters {
+  display: flex !important;
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid var(--daily-border);
+  border-bottom: 1px solid var(--daily-border);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#page .daily-filter-group {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+}
+
+#page .daily-filter-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px !important;
+  color: var(--daily-text3) !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#page .daily-chip {
+  display: inline-block !important;
+  background: transparent !important;
+  border: 1px solid var(--daily-border) !important;
+  color: var(--daily-text2) !important;
+  padding: 3px 10px !important;
+  border-radius: 8px !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px !important;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#page .daily-chip:hover {
+  border-color: var(--daily-accent) !important;
+  color: var(--daily-accent) !important;
+  background: var(--daily-accent-bg) !important;
+}
+
+#page .daily-chip.active {
+  background: var(--daily-accent) !important;
+  color: #fff !important;
+  border-color: var(--daily-accent) !important;
+}
+
+#page .daily-filter-reset {
+  margin-left: auto;
+  background: none !important;
+  border: none !important;
+  color: var(--daily-orange) !important;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+#page .daily-filter-reset:disabled {
+  color: var(--daily-text3) !important;
+  cursor: default;
+  text-decoration: none;
+}
+
+/* ── 问题列表 ─────────────────────────────── */
+#page .daily-qlist {
+  display: flex !important;
+  flex-direction: column;
+}
+
+#page .daily-q {
+  display: grid !important;
+  grid-template-columns: 68px 1fr auto !important;
+  padding: 20px 0 !important;
+  border-bottom: 1px solid var(--daily-border);
+  gap: 16px;
+  align-items: start;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.2s, padding 0.15s;
+}
+
+#page .daily-q:hover {
+  background: var(--daily-bg2) !important;
+  padding: 20px 14px !important;
+  margin: 0 -14px;
+}
+
+#page .daily-q.open {
+  background: var(--daily-bg2) !important;
+  padding: 20px 14px !important;
+  margin: 0 -14px;
+  box-shadow: var(--daily-shadow);
+}
+
+#page .daily-q__id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px !important;
+  color: var(--daily-text3) !important;
+  letter-spacing: 0.06em;
+  padding-top: 3px;
+}
+
+#page .daily-q__body h3 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px !important;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--daily-text) !important;
+  margin: 0 !important;
+}
+
+#page .daily-q__meta {
+  display: flex !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px !important;
+  color: var(--daily-text3) !important;
+  margin-top: 7px;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#page .daily-q__meta .daily-tag {
+  background: var(--daily-bg3) !important;
+  border: 1px solid var(--daily-border);
+  padding: 1px 7px;
+  border-radius: 5px;
+  color: var(--daily-text2) !important;
+}
+
+#page .daily-dot {
+  display: inline-block !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+#page .daily-dot.proposed { background: var(--daily-h-propose) !important; border: 1px solid #22c55e; }
+#page .daily-dot.thinking { background: var(--daily-h-think) !important; }
+#page .daily-dot.resolved { background: var(--daily-h-resolved) !important; }
+#page .daily-dot.shelved  { background: var(--daily-h-absent-m) !important; }
+
+#page .daily-q__labels {
+  display: flex !important;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+#page .daily-label {
+  display: inline-block !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px !important;
+  padding: 2px 7px !important;
+  border: 1px solid var(--daily-border);
+  color: var(--daily-text3) !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+#page .daily-label.scale-flash,
+#page .daily-label.scale-short {
+  color: var(--daily-green) !important;
+  border-color: var(--daily-green2) !important;
+  background: var(--daily-green3) !important;
+}
+
+#page .daily-label.scale-long {
+  color: var(--daily-orange) !important;
+  border-color: #fcd34d !important;
+  background: #fffbeb !important;
+}
+
+[data-theme="dark"] #page .daily-label.scale-long {
+  background: #2a1a00 !important;
+  border-color: #7a5200 !important;
+}
+
+#page .daily-label.scale-lifelong {
+  color: var(--daily-text2) !important;
+  border-color: var(--daily-border2) !important;
+  background: var(--daily-bg3) !important;
+}
+
+#page .daily-label.restart {
+  background: var(--daily-orange) !important;
+  color: #fff !important;
+  border-color: var(--daily-orange) !important;
+}
+
+/* ── 思考记录 ─────────────────────────────── */
+#page .daily-entries {
+  display: none;
+  grid-column: 2 / -1;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--daily-border);
+  animation: dailySlideDown 0.2s ease;
+}
+
+@keyframes dailySlideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#page .daily-q.open .daily-entries { display: block !important; }
+
+#page .daily-entry {
+  display: grid !important;
+  grid-template-columns: 90px 66px 1fr !important;
+  gap: 12px;
+  padding: 7px 0 !important;
+  font-size: 13px !important;
+  align-items: start;
+  border-bottom: 1px solid var(--daily-border);
+}
+
+#page .daily-entry:last-child { border-bottom: none; }
+
+#page .daily-entry__date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px !important;
+  color: var(--daily-text3) !important;
+  padding-top: 1px;
+}
+
+#page .daily-entry__type {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-top: 1px;
+}
+
+#page .daily-entry__type.propose  { color: #22c55e !important; }
+#page .daily-entry__type.think    { color: var(--daily-accent) !important; }
+#page .daily-entry__type.resolved { color: var(--daily-green) !important; font-weight: 500; }
+
+#page .daily-entry__note {
+  color: var(--daily-text2) !important;
+  line-height: 1.6;
+}
+
+/* ── Tooltip ──────────────────────────────── */
+.daily-tooltip {
+  position: fixed !important;
+  background: var(--daily-bg2) !important;
+  border: 1px solid var(--daily-border2) !important;
+  color: var(--daily-text) !important;
+  padding: 10px 14px !important;
+  font-size: 11px !important;
+  line-height: 1.5;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.15s;
+  max-width: 240px;
+  box-shadow: var(--daily-shadow);
+}
+
+.daily-tooltip.show { opacity: 1 !important; }
+
+.daily-tooltip__date {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--daily-text3) !important;
+  font-size: 10px !important;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.daily-tooltip__item {
+  color: var(--daily-text2) !important;
+  margin-top: 2px;
+  display: block;
+}
+
+.daily-tooltip__item::before { content: "· "; color: var(--daily-accent) !important; }
+
+#page .daily-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--daily-text3) !important;
+  font-style: italic;
+}
+
+/* ── 响应式 ───────────────────────────────── */
+@media (max-width: 768px) {
+  #page .daily-stat-cards { grid-template-columns: repeat(2, 1fr) !important; }
+  #page .daily-q { grid-template-columns: 1fr !important; }
+  #page .daily-q__labels { justify-content: flex-start; }
+  #page .daily-entries { grid-column: 1 / -1; }
+  #page .daily-entry { grid-template-columns: 1fr !important; gap: 3px; }
+  #page .daily-title { font-size: 26px !important; }
+}
+
+/* ============================================
+   侧边栏日历小组件样式
+   ============================================ */
+
+.aside-calendar {
+  display: flex !important;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── 日历卡片 ── */
+.cal-widget {
+  background: var(--daily-bg2);
+  border: 1px solid var(--daily-border);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.cal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.cal-week-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--daily-text3);
+  line-height: 1.6;
+}
+
+.cal-week-badge strong {
+  color: var(--daily-accent);
+  font-weight: 500;
+}
+
+.cal-today-num {
+  font-family: 'Georgia', serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--daily-accent);
+  letter-spacing: -0.02em;
+}
+
+/* 小月历格子 */
+.cal-mini-grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.cal-dow {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--daily-text3);
+  padding-bottom: 3px;
+}
+
+.cal-day {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--daily-text2);
+  height: 20px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.cal-day.today {
+  background: var(--daily-accent) !important;
+  color: #fff !important;
+  border-radius: 50% !important;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  font-weight: 600;
+}
+
+.cal-day.other {
+  color: var(--daily-border2) !important;
+}
+
+.cal-footer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--daily-text3);
+  padding-top: 8px;
+  border-top: 1px solid var(--daily-border);
+  line-height: 1.8;
+}
+
+.cal-footer span {
+  color: var(--daily-text2);
+}
+
+/* ── 进度卡片 ── */
+.cal-progress {
+  background: var(--daily-bg2);
+  border: 1px solid var(--daily-border);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.cal-progress-title {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--daily-text3);
+  margin-bottom: 6px;
+}
+
+.cal-progress-num {
+  font-family: 'Georgia', serif;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--daily-text);
+  letter-spacing: -0.02em;
+}
+
+.cal-progress-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--daily-text3);
+  margin-bottom: 12px;
+}
+
+.cal-prog-row {
+  display: grid !important;
+  grid-template-columns: 28px 1fr 56px !important;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+
+.cal-prog-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--daily-text3);
+}
+
+.cal-prog-bar-wrap {
+  background: var(--daily-bg3);
+  border-radius: 4px;
+  height: 15px;
+  overflow: hidden;
+  border: 1px solid var(--daily-border);
+}
+
+.cal-prog-bar-fill {
+  height: 100%;
+  background: var(--daily-accent);
+  border-radius: 3px;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 4px;
+  min-width: 24px;
+  transition: width 0.6s ease;
+}
+
+.cal-prog-bar-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.cal-prog-remain {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--daily-text3);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cal-prog-remain strong {
+  color: var(--daily-text2);
+  font-weight: 500;
+}
